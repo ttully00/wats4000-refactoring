@@ -25,6 +25,7 @@
     <div v-else>
       <h2>Loading...</h2>
     </div>
+    <error-list v-bind:errorList="errors"></error-list>
   </div>
 </template>
 
@@ -32,6 +33,7 @@
 import {API} from '@/common/api';
 import WeatherSummary from '@/components/WeatherSummary';
 import WeatherData from '@/components/WeatherData';
+import ErrorList from '@/components/ErrorList';
 
 export default {
   name: 'Forecast',
@@ -80,19 +82,15 @@ export default {
      },
   components: {
   'weather-summary': WeatherSummary,
-    'weather-data': WeatherData
-
+    'weather-data': WeatherData,
+     'error-list': ErrorList
    }
   }
 
 </script>
 
 <style scoped>
-.errors li {
-  color: red;
-  border: solid red 1px;
-  padding: 5px;
-}
+
 h1, h2 {
   font-weight: normal;
 }

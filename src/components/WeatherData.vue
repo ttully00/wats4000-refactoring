@@ -1,8 +1,8 @@
 <template>
 
      <dl>
-         <dt v-if="weatherData.temp">Current Temp</dt>
-         <dd v-if="weatherData.temp">{{ weatherData.temp }}&deg;F</dd>
+         <dt v-if="weatherData.temp != weatherData.temp_min">Current Temp</dt>
+         <dd v-if="weatherData.temp != weatherData.temp_min">{{ weatherData.temp }}&deg;F</dd>
          <dt>Humidity</dt>
         <dd>{{weatherData.humidity }}%</dd>
         <dt>High</dt>
@@ -12,7 +12,17 @@
     </dl>
 </template>
 
-<div -v-for="weatherSummary in weatherData" class="weatherSummary">
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
+
+<div v-for="weatherSummary in weatherData" class="weatherSummary">
     <img v-bind:src="'http://openweathermap.org/img/w/' + weatherSummary.icon + '.png'" v-bind:alt="weatherSummary.main">
     <br>
     <b>{{ weatherSummary.main }}</b>
@@ -30,7 +40,7 @@ export default {
     }
   },
 props: {
-    weatherData: []
+    weatherData: {}
 }
 }
 </script>
@@ -57,7 +67,7 @@ props: {
     content: ":";
   }
 </style>
-<div -v-for="weatherSummary in weatherData" class="weatherSummary">
+<div v-for="weatherSummary in weatherData" class="weatherSummary">
     <img v-bind:src="'http://openweathermap.org/img/w/' + weatherSummary.icon + '.png'" v-bind:alt="weatherSummary.main">
     <br>
     <b>{{ weatherSummary.main }}</b>
